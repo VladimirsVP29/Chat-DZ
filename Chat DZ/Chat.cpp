@@ -71,6 +71,31 @@ void Chat::login()
 	} while (!currentUser_);
 }
 
+void Chat::signUp()
+{
+	std::string login, password, name;
+
+	std::cout << "login: ";
+	std::cin >> login;
+	std::cout << "password: ";
+	std::cin >> password;
+	std::cout << "name: ";
+	std::cin >> name;
+
+	if (getUserByLogin(login) || login == "all")
+	{
+		throw UserLoginExp();
+	}
+	if (getUserByName(name) || name == "all")
+	{
+		throw UserNameExp();
+	}
+
+	User user = User(login, password, name);
+	users_.push_back(user);
+	currentUser_ = std::make_shared<User>(user);
+}
+
 std::shared_ptr<User> Chat::getUserByLogin(const std::string& login) const
 {
 	for (auto &user : users_)
