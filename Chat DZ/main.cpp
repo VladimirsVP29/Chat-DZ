@@ -1,8 +1,18 @@
-#include<iostream>
+#include "Chat.h"
 
 int main()
 {
-	std::cout << "Hello Git " << std::endl;
-	std::cout << "Hello Git 3" << std::endl;
+	Chat chat;
 
+	chat.start();
+
+	while (chat.isChatWork())
+	{
+		chat.showLoginMenu();
+
+		while (chat.getCurrentUser())
+		{
+			chat.showUserMenu();
+		}
+	}
 }

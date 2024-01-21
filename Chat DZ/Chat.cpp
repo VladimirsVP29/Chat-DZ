@@ -51,7 +51,7 @@ void Chat::showUserMenu()
 
 	while (currentUser_)
 	{
-		std::cout << "Menu: (1)Show chat | (2)Add massege | (3)Users | (0)Logout";
+		std::cout << "Menu: (1)Show chat | (2)Add messege | (3)Users | (0)Logout";
 		std::cout << std::endl
 		          << ">> ";
 		std::cin >> operation;
@@ -95,7 +95,7 @@ void Chat::login()
 		{
 			currentUser_ = nullptr;
 
-			std::cout << "login failed..." << std::endl;
+			std::cout << "login is failed..." << std::endl;
 			std::cout << "(0)exit or (any key)repeat: ";
 			std::cin >> operation;
 
