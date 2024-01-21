@@ -6,6 +6,43 @@ void Chat::start()
 	isChatWork_ = true;
 }
 
+void Chat::showLoginMenu()
+{
+	currentUser_ = nullptr;
+	char operation;
+
+	do
+	{
+		std::cout << "(1)Login" << std::endl;
+		std::cout << "(2)SignUp" << std::endl;
+		std::cout << "(0)Shutdown" << std::endl;
+		std::cin >> operation;
+
+		switch (operation)
+		{
+		case '1':
+			login();
+			break;
+		case '2':
+			try
+			{
+				signUp();
+			}
+			catch (const std::exception &e)
+			{
+				std::cout << e.what() << std::endl;
+			}
+			break;
+		case '0':
+			isChatWork_ = false;
+			break;
+		default:
+			std::cout << "1 or 2..." << std::endl;
+			break;
+		}
+	} while (!currentUser_ && isChatWork_);
+}
+
 void Chat::login()
 {
 	std::string login, password;
