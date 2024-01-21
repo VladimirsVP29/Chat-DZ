@@ -19,3 +19,28 @@ struct UserNameExp : public std::exception
 		return "error: user name is busy";
 	}
 };
+
+class Chat
+{
+public:
+	void start();
+	void showLoginMenu();
+	void showUserMenu();
+	bool isChatWork() const 
+	{ 
+		return isChatWork_;
+	}
+	std::shared_ptr<User> getCurrentUser() const
+	{
+		return currentUser_;
+	}
+
+private:
+	bool isChatWork_ = false;
+	std::vector<User> users_;
+	std::vector<Message> messages_;
+	std::shared_ptr<User> currentUser_ = nullptr;
+
+
+
+};
