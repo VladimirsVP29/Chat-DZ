@@ -43,7 +43,7 @@ private:
 
 	void login();
 	void signUp();
-	void showChat();
+	void showChat() const;
 	void showAllUsersName() const;
 	void addMessage();
 	std::vector<User>& getAllUsers()

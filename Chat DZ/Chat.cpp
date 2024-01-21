@@ -130,6 +130,36 @@ void Chat::signUp()
 	currentUser_ = std::make_shared<User>(user);
 }
 
+void Chat::showChat() const
+{
+	std::string from;
+	std::string to;
+	std::cout << "-- - Chat-- -" << std::endl;
+
+	for (auto mess : messages_)
+	{
+		if (currentUser_->getUserLogin() == mess.getFrom()
+			|| currentUser_->getUserLogin() == mess.getTo() || mess.getTo() == "all")
+		{
+			from = (currentUser_->getUserLogin() == mess.getFrom()) ? "me"
+				: getUserByLogin(mess.getFrom())->getUserName();
+
+			if (mess.getTo() == "all")
+			{
+				to = "(all)";
+			}
+			else
+			{
+				to = (currentUser_->getUserLogin() == mess.getTo()) ? "me"
+					: getUserByLogin(mess.getTo())->getUserName();
+			}
+			std::cout << "Message from " << from << " to " << to << std::endl;
+			std::cout << "text: " << mess.getText() << std::endl;
+		}
+	}
+	std::cout << "--------------" << std::endl;
+}
+
 std::shared_ptr<User> Chat::getUserByLogin(const std::string& login) const
 {
 	for (auto &user : users_)
