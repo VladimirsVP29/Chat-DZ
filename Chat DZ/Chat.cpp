@@ -160,6 +160,22 @@ void Chat::showChat() const
 	std::cout << "--------------" << std::endl;
 }
 
+void Chat::showAllUsersName() const
+{
+	std::cout << "--- Users ---" << std::endl;
+
+	for (auto &user : users_)
+	{
+		std::cout << user.getUserName();
+
+		if (currentUser_->getUserLogin() == user.getUserLogin())
+			std::cout << "(me)";
+
+		std::cout << std::endl;
+	}
+	std::cout << "--------------" << std::endl;
+}
+
 std::shared_ptr<User> Chat::getUserByLogin(const std::string& login) const
 {
 	for (auto &user : users_)
