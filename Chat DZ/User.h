@@ -22,5 +22,3 @@ private:
 	std::string password_;
 	std::string name_;
 };
-
-
