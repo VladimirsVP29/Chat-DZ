@@ -41,6 +41,20 @@ private:
 	std::vector<Message> messages_;
 	std::shared_ptr<User> currentUser_ = nullptr;
 
-
+	void login();
+	void signUp();
+	void showChat();
+	void showAllUsersName() const;
+	void addMessage();
+	std::vector<User>& getAllUsers()
+	{
+		return users_;
+	}
+	std::vector<Message>& getAllMessages()
+	{
+		return messages_;
+	}
+	std::shared_ptr<User> getUserByLogin(const std::string& login) const;
+	std::shared_ptr<User> getUserByName(const std::string& name) const;
 
 };
