@@ -176,6 +176,28 @@ void Chat::showAllUsersName() const
 	std::cout << "--------------" << std::endl;
 }
 
+void Chat::addMessage()
+{
+	std::string to, text;
+
+	std::cout << "To (name or all): ";
+	std::cin >> to;
+	std::cout << "Text: ";
+	std::cin.ignore();
+	getline(std::cin, text);
+
+	if (!(to == "all" || getUserByName(to)))
+	{
+		std::cout << "error send message: can not find " << to << std::endl;
+		return;
+	}
+	if (to == "all")
+		messages_.push_back(Message{ currentUser_->getUserLogin(), "all", text });
+	else 
+		messages_.push_back(Message{ currentUser_->getUserLogin(),
+			getUserByName(to)->getUserLogin(), text });
+}
+
 std::shared_ptr<User> Chat::getUserByLogin(const std::string& login) const
 {
 	for (auto &user : users_)
@@ -199,4 +221,3 @@ std::shared_ptr<User> Chat::getUserByName(const std::string& name) const
 	}
 	return nullptr;
 }
-
